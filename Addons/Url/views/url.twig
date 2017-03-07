@@ -1,0 +1,18 @@
+
+{{ set_assets('applications/Feeds/Addons/Url/assets/css/style.css') }}
+
+<div id="menu" class="block_url_category">
+    <div class="panel list-group">
+        {% if urls|length > 0 %}
+            {% for url in urls %}
+
+                {% set cat_link = generate_url('feeds.articles', {'category_id': category.id }) %}
+
+                <a href="{{ cat_link }}" class="list-group-item" title="{{ url.title }}">
+                    {{ url.title }} 
+                </a>
+
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

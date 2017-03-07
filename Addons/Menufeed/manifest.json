@@ -1,0 +1,10 @@
+{
+    "name": "menufeed",
+    "title": "Menufeed Listing",
+    "explanation": "Menufeed Listing",
+    "description": "Menufeed Listing",
+    "version": 1,
+    "icon": "assets\/feeds\/addons\/menufeed\/icon.png",
+    "extension": "addon",
+    "path": "feeds\/addons\/menufeed\/"
+}

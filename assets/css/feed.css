@@ -1,0 +1,58 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 15, 2015, 10:04:41 AM
+    Author     : sbc
+*/
+.feed-category-list .feed-category{
+    border:1px solid #ddd;
+    margin-bottom:10px;
+}
+
+.feed-category-list .feed-category .category-content{
+    border-bottom:1px dotted #ddd;
+}
+
+.feed-category-list .feed-category img{
+    margin:5px;
+}
+
+.content-list .single-content h3{
+
+}
+
+.content-list .single-content{
+    border:1px solid #ddd;
+    padding:5px;
+    margin-bottom:10px;
+}
+
+.content-list .single-content img{
+    width:100%;
+}
+
+.content-list .single-content .single-content-desc{
+    height: 100px;
+    overflow: hidden;
+}
+
+.content-main-image img{
+    width:100%;
+}
+
+.feed-content-mainbody{
+    min-height: 100px;
+}
+
+.feed-content-list .feed-content{
+    border:1px solid #ddd;
+    margin-bottom:10px;
+}
+
+.feed-content-list .feed-content img{
+    margin:5px;
+}
+

@@ -1,0 +1,14 @@
+{
+    "FeedsFeeds": {
+        "namespace": "Feeds\\Feeds",
+        "controller": "FeedsController"
+    },
+    "FeedsCategories": {
+        "namespace": "Feeds\\Categories",
+        "controller": "CategoriesController"
+    },
+    "FeedsArticles": {
+        "namespace": "Feeds\\Articles",
+        "controller": "ArticlesController"
+    }
+}

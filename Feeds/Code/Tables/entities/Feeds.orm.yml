@@ -1,0 +1,71 @@
+Feeds\Feeds\Code\Tables\Feeds:
+  table: feeds_feeds
+  type: entity
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    category_id:
+      name: category_id
+      type: integer
+      length: 11
+      nullable: true
+    title:
+      name: title
+      type: string
+      length: 255
+      nullable: false
+    feed_url:
+      name: feed_url
+      type: string
+      length: 255
+      nullable: true
+    site_url:
+      name: site_url
+      type: string
+      length: 255
+      nullable: true
+    selector:
+      name: selector
+      type: string
+      length: 255
+      nullable: true
+    is_processed:
+      name: is_processed
+      type: integer
+      length: 11
+      nullable: true
+    published:
+      name: published
+      type: integer
+      length: 11
+      nullable: true
+    created_by:
+      name: created_by
+      type: integer
+      length: 11
+      nullable: false
+    date_created:
+      name: date_created
+      type: datetime
+      nullable: false
+    modified_by:
+      name: modified_by
+      type: integer
+      length: 11
+      nullable: false
+    date_modified:
+      name: date_modified
+      type: datetime
+      nullable: false
+  indexes:
+    category_id_index:
+      columns: [category_id]
+  lifecycleCallbacks:
+    prePersist:
+      - onPrePersist
+      - onPrePersistCallbacks
+    preUpdate:
+      - onPreUpdate
+      - onPreUpdateCallbacks

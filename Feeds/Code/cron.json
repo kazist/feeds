@@ -1,0 +1,17 @@
+
+[{
+        "tracking_id": "1",
+        "controller": "Feeds\\Feeds\\Code\\Controllers\\FeedsController",
+        "function": "processfeedAction",
+        "unique_name": "feeds.feeds.processfeed",
+        "minute": "0",
+        "hour": "*",
+        "day_of_month": "*",
+        "month": "*",
+        "day_of_week": "*",
+        "year": "*",
+        "next_run_time": "",
+        "published": 0
+    }]
+
+

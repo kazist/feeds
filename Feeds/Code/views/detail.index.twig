@@ -1,0 +1,27 @@
+{# empty Twig template #}
+{% import "form.macro.twig" as forms %}
+
+{{ set_assets('applications/Feeds/assets/css/feed.css') }}
+
+<h1 class="component-header">{{ item.title }}</h1>
+
+<div class="category-posted-date">
+    <i class="fa fa-clock-o"></i> Posted:  {{ item.date_created|date('d M Y H:i') }} &nbsp;&nbsp;
+</div>
+
+<div>
+    {{ item.description|raw }}
+</div>
+
+<div class="clearfix"></div>
+<div> 
+    <div class="clearfix"></div>
+    <div class="well well-sm"> Content</div>
+    <hr>
+    <div class="category-contents-listing">
+        {% include "content.list.twig" ignore missing with {'category_id': item.id,'action': 'latest','limit': '6'}  %}
+    </div>
+    <div class="clearfix"></div>
+    <br>
+</div>
+

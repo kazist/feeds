@@ -1,0 +1,27 @@
+
+{{ set_assets('applications/Surveys/Addons/Survey/assets/css/style.css') }}
+
+<ul class="survey-content">
+
+    {% if contents|length > 0 %}
+        {% for content in contents %}
+            <li>
+                <div>
+
+                    <a href="{{ generate_url('feeds.articles.detail', {'id': content.id}) }}" title="{{ content.title }}">
+                        <img src="{{ resized_image(content.content_file, 48,48) }}" alt="{{ content.title }}" title="{{ content.title }}" align="left"  width="48px">
+                    </a>
+
+                    <b>
+                        <a href="{{ generate_url('feeds.articles.detail', {'id': content.id}) }}" title='{{ content.title }}'>
+                            {{ content.title }}
+                        </a>
+                    </b>
+                </div>
+                <div class="clearfix"></div>
+            </li>
+        {% endfor %}
+    {% endif %}
+
+</ul>
+

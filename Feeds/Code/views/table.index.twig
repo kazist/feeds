@@ -1,0 +1,72 @@
+{# empty Twig template #}
+
+{{ set_assets('applications/Feeds/assets/css/feed.css') }}
+
+<h1 class="component-header">Feeds Category</h1>
+
+<div class="feed-category-list">
+    {% if items|length > 0 %}
+        {% for item in items %}
+            <div class="col-sm-6">
+                <div class="feed-category">
+
+                    <h3>
+                        <a href="{{ generate_url('feeds.categories.detail', {'id': item.id}) }}" title='{{ item.title }}'>
+                            {{ item.title }} 
+                        </a>
+                    </h3>
+                    <hr>
+
+                    <div class="category-contents-topmost">
+                        <a href="{{ generate_url('feeds.articles.detail', {'id': item.contents.0.id}) }}" title='{{ item.contents.0.title }}'>
+                            {{ item.contents.0.title|raw }} 
+                        </a>
+                        <a href="{{ generate_url('feeds.articles.detail', {'id': item.contents.0.id}) }}" title="{{ item.title }}">
+                            <img src="{{ resized_image(item.contents.0.media.file,90,90) }}" class="avatar" alt="{{ item.title }}" title="{{ item.title }}" align="left">
+                        </a>
+
+                        {{ item.contents.0.content|striptags|truncate(200)|raw }}
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="category-contents">
+                        {% if item.contents|length > 0 %}
+                            {% for key,content in item.contents %}
+
+                                {% if key %}
+                                    <div class="col-sm-12">
+                                        <div class="category-content">
+
+                                            <a href="{{ generate_url('feeds.articles.detail', {'id': content.id}) }}" title="{{ content.title }}">
+                                                <img src="{{ resized_image(content.media.file,48,48) }}" class="avatar" alt="{{ content.title }}" title="{{ content.title }}" align="left">
+                                            </a>
+                                            <a href="{{ generate_url('feeds.articles.detail', {'id': content.id}) }}" title='{{ content.title }}'>
+                                                {{ content.title }} 
+                                            </a>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                            {% endfor %}
+                        {% endif %}
+
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <a class="btn btn-success btn-xs btn-flat" href="{{ generate_url('feeds.categories.detail', {'id': item.id}) }}" title='View Category'>
+                        View Category
+                    </a>
+                    <div class="clearfix"></div>
+
+                </div>
+            </div>
+
+        {% endfor %}
+    {% endif %}
+</div>
+
+<div class="clearfix"></div>
+
+{% include "items.pagination.twig"%}
+

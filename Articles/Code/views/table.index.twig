@@ -1,0 +1,76 @@
+{# empty Twig template #}
+
+{{ set_assets('applications/Feeds/assets/css/feed.css') }}
+
+<h1 class="component-header">Feeds Content</h1>
+
+
+<div class="feed-content-list">
+
+    <div class="col-sm-12">
+        <div class="feed-content">
+
+            <h3>
+                <a href="{{ generate_url('feeds.articles.detail', {'id': items.0.id}) }}" title='{{ items.0.title }}'>
+                    {{ items.0.title|truncate(50)|raw }} 
+                </a>
+            </h3>
+            <hr>
+
+            <div class="feed-content-mainbody">
+                <a href="{{ generate_url('feeds.articles.detail', {'id': items.0.id}) }}"title='{{ items.0.title }}'>
+                    <img src="{{ resized_image(items.0.media.file,150,150) }}" class="avatar" alt="{{ items.0.title }}" title="{{ items.0.title }}" align="left" width="150px">
+                </a>
+
+                {{ items.0.content|striptags|truncate(600)|raw }}
+            </div>
+
+            <div class="clearfix"></div>
+
+            <a class="btn btn-success btn-xs btn-flat" href="{{ generate_url('feeds.articles.detail', {'id': items.0.id}) }}" title=' View Post'>
+                View Post
+            </a>
+            <div class="clearfix"></div>
+
+        </div>
+    </div>
+
+    {% if items|length > 0 %}
+        {% for key,item in items %}
+            {% if key %}
+                <div class="col-sm-6">
+                    <div class="feed-content">
+
+                        <h3>
+                            <a href="{{ generate_url('feeds.articles.detail', {'id': item.id}) }}" title='{{ item.title }}'>
+                                {{ item.title|truncate(45)|raw }} 
+                            </a>
+                        </h3>
+                        <hr>
+
+                        <div class="feed-content-mainbody">
+                            <a href="{{ generate_url('feeds.articles.detail', {'id': item.id}) }}" title='{{ item.title }}'>
+                                <img src="{{ resized_image(item.media.file,90,90) }}" class="avatar" alt="{{ item.title }}" title="{{ item.title }}" align="left" width="90px">
+                            </a>
+
+                            {{ item.content|striptags|truncate(120)|raw }}
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <a class="btn btn-success btn-xs btn-flat" href="{{ generate_url('feeds.articles.detail', {'id': item.id}) }}" title='View Post'>
+                            View Post
+                        </a>
+                        <div class="clearfix"></div>
+
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
+
+<div class="clearfix"></div>
+
+{% include "items.pagination.twig"%}
+

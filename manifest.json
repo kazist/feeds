@@ -1,0 +1,9 @@
+{
+    "name": "feeds",
+    "title": "Rss Feeds",
+    "icon": "icons\/feeds.png",
+    "extension": "component",
+    "path": "feeds\/",
+    "description": "Rss Feeds",
+    "version": 1
+}

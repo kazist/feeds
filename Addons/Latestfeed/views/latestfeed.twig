@@ -1,0 +1,88 @@
+
+{{ set_assets('applications/Feeds/Addons/Latestcontent/assets/css/style.css') }}
+
+<div class="latest_contents_block">
+    <div class="col-sm-6 most_latest_contents">
+        {% if most_latest_contents.title != '' %}
+            <div class="image_container">
+                <a href="{{ generate_url('feeds.articles.detail', {'id': most_latest_contents.id}) }}" title="{{ most_latest_contents.title }}">
+                    <img src="{{ resized_image(most_latest_contents.content_image,300,300) }}" alt="{{ most_latest_contents.title }}" title="{{ most_latest_contents.title }}"/>
+                </a>
+            </div>
+            <h3>
+                <a href="{{ generate_url('feeds.articles.detail', {'id': most_latest_contents.id}) }}" title="{{ most_latest_contents.title }}">
+                    {{ most_latest_contents.title|capitalize }}
+                </a>
+            </h3>
+
+            <div>{{ most_latest_contents.content|striptags|truncate(150)|raw }}</div> 
+
+            <a href="{{ generate_url('feeds.articles.detail', {'id': most_latest_contents.id}) }}" title="{{ most_latest_contents.title }} Read More">
+                Read More
+            </a>
+
+            <div class="content-update-info">
+                <div class="text-capitalize">
+                    <a>
+                        <i class="fa fa-user"></i> 
+                        <a href="{{ generate_url('social.members.detail', {'id': most_latest_contents.created_by}) }}" title='{{ most_latest_contents.author_name }}'>
+                            {{ most_latest_contents.author_name }}
+                        </a>
+                    </a>
+                </div>
+                <div class="text-capitalize">
+                    <i class="fa fa-clock-o"></i> {{ most_latest_blogs.date_created|date('d M Y H:i') }}
+                </div>
+                <div class="text-capitalize pull-right">
+                    <a href="{{ generate_url('feeds.articles.detail', {'id': most_latest_contents.id}) }}#comments" title='{{ most_latest_contents.author_name }} Comments'>
+                        <i class="fa fa-comments"></i> Comments (0)
+                    </a>
+                </div>
+            </div>         
+
+        {% else %}
+            No Most Latest Articles
+        {% endif %}
+    </div>
+
+    <div class="col-sm-6 latest_contents">
+        {% if latest_contents|length > 0 %}
+            {% for latest_content in latest_contents %}
+                <div class="latest_content">
+                    <a href="{{ generate_url('feeds.articles.detail', {'id': latest_content.id}) }}" title="{{ latest_content.title }}">
+                        <img src="{{ resized_image(latest_content.content_image,90,90) }}" align="left" alt="{{ latest_content.title }}" title="{{ latest_content.title }}" />
+                    </a>
+                    <h4>
+                        <a href="{{ generate_url('feeds.articles.detail', {'id': latest_content.id}) }}" title="{{ latest_content.title }}">
+                            {{ latest_content.title|capitalize  }}
+                        </a>
+                    </h4>
+                    <div>{{ latest_content.content|striptags|truncate(80)|raw }}</div> 
+
+                    <a href="{{ generate_url('feeds.articles.detail', {'id': latest_content.id}) }}" title="{{ latest_content.title }} Read More">
+                        Read More
+                    </a>
+
+                    <div class="clearfix"></div>
+
+                    <div class="content-update-info">
+
+
+                        <a href="{{ generate_url('social.members.detail', {'id':latest_content.created_by}) }}" title='{{ latest_content.author_name }}'>
+                            <i class="fa fa-user"></i>:  {{ latest_content.author_name }}
+                        </a>
+                        <i class="fa fa-clock-o"></i>: {{ latest_content.date_created|date('d M Y H:i') }}
+
+                        <a href="{{ generate_url('feeds.articles.detail', {'id': latest_content.id}) }}#comments" title='{{ latest_content.title }} Comments'>
+                            <i class="fa fa-comments"></i>: Comments (0)
+                        </a>
+                    </div> 
+                    <div class="clearfix"></div>  
+                </div>
+            {% endfor %}
+        {% else %}
+            No Latest Articles
+        {% endif %}
+    </div>
+    <div class="clearfix"></div>
+</div>

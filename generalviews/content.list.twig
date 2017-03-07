@@ -1,0 +1,73 @@
+{# empty Twig template #}
+
+{% set params = { 'category_id': category_id,  'action': action, 'offset': offset , 'limit': limit} %}
+
+{{ set_assets('applications/Feeds/assets/js/feed.js') }}
+{{ set_assets('applications/Feeds/assets/css/feed.css') }}
+
+{% set items = callFunction( "Feeds.Articles.Code.Models.ArticlesModel", 'getContents', params ) %}
+{% set total = callFunction( "Feeds.Articles.Code.Models.ArticlesModel", 'getTotalContents', params ) %}
+
+
+
+<div class="content-list">
+    {% if items|length > 0 %}
+        {% for item in items %}
+
+            <div class="col-sm-6">
+
+                <div class="single-content">
+                    <h3>
+                        <a href="{{ generate_url('feeds.articles.detail', {'id': item.id}) }}" title='{{ item.title }}'>
+                            {{ item.title|truncate(40)|raw }} 
+                        </a>
+                    </h3>
+
+                    <a href="{{ generate_url('feeds.articles.detail', {'id':item.id}) }}" title="{{ item.title }}">
+                        <img src="{{ resized_image(item.media.file,300,300) }}" class="avatar" alt="{{ item.title }}" title="{{ item.title }}" align="left">
+                    </a>
+                    <div class="clearfix"></div>
+
+                    <div class="single-content-desc">
+                        {{ item.content|striptags|truncate(350)|raw }}
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div>
+                        <a class="btn btn-success btn-xs btn-flat" href="{{ generate_url('feeds.articles.detail', {'id': item.id}) }}" title='View More'>
+                            View More
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+
+<div class="clearfix"></div>
+{% if total > limit %}
+
+    <div class="contents-navigation">
+
+        {% if offset %}
+            <div class="previous-contents pull-left">
+                <a class="btn btn-default btn-sm btn-flat" category_id="{{ category_id }}" offset="{{ offset|default('0') }}" action="previous" limit="{{ limit|default('10') }}">
+                    <i class="fa fa-arrow-left"></i>
+                    Pre
+                </a>
+            </div>
+        {% endif %}
+
+        {% if (offset + limit) < total %}
+            <div class="next-contents pull-right">
+                <a class="btn btn-default btn-sm btn-flat" category_id="{{ category_id }}" offset="{{ offset|default('0')  }}" action="next" limit="{{ limit|default('10') }}">
+                    <i class="fa fa-arrow-right"></i>
+                    Next 
+                </a>
+            </div>
+        {% endif %}
+    </div>
+
+{% endif %}
