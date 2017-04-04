@@ -1,9 +1,9 @@
 {
-    "name": "feeds",
+    "name": "kazist/feeds",
     "title": "Rss Feeds",
     "icon": "icons\/feeds.png",
     "extension": "component",
-    "path": "feeds\/",
+    "path": "applications/Feeds/",
     "description": "Rss Feeds",
     "version": 1
 }
