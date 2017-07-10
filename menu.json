@@ -2,23 +2,26 @@
     "title": "Feeds",
     "description": "Feeds List",
     "alias": "feeds",
-    "icon": "fa-picture-o",
+    "icon": "fa fa-rss",
     "home_link": "feeds\/feeds",
     "is_core": "1",
     "menulist": [{
             "title": "Feeds",
             "alias": "admin_feeds_feeds",
             "url": "admin/feeds/feeds",
+            "icon": "fa fa-rss",
             "children": []
         }, {
             "title": "Articles",
             "alias": "admin_feeds_articles",
             "url": "admin/feeds/articles",
+            "icon": "fa fa-file-text",
             "children": []
         }, {
             "title": "Categories",
             "alias": "admin_feeds_categories",
             "url": "admin/feeds/categories",
+            "icon": "fa fa-navicon",
             "children": []
         }]
 }
