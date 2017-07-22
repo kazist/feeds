@@ -4,6 +4,7 @@
     "alias": "feeds",
     "icon": "fa fa-rss",
     "home_link": "feeds\/feeds",
+    "path": "applications/Feeds",
     "is_core": "1",
     "menulist": [{
             "title": "Feeds",
